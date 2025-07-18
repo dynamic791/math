@@ -1,0 +1,47 @@
+# Multiplication grid
+import matplotlib.pyplot as plt
+import time
+
+print('This is a multiplication grid')
+n = int(input('Choose a positive integer to be between: '))
+start = time.time()
+
+x_axis = []
+for i in range(0,n + 1):
+    x_axis.append(i)
+y_axis = []
+for i in range(0,n + 1):
+    y_axis.append(i)
+zeros = []
+zero = []
+for i in range(0,n + 1):
+    zeros.append(0)
+
+x_component = []
+y_component = []
+
+for a in x_axis:
+    for b in y_axis:
+        if a > n:
+            break
+        y_component.append(a*b)
+        x_component.append(a)
+
+for c in range(max(y_axis)+1,max(y_component)+1):
+    y_axis.append(c)
+
+for z in range(0,max(y_component)+1):
+    zero.append(0)
+
+
+plt.title(f"Multiplication Grid up to {n}")
+plt.xlabel("Base (a)")
+plt.ylabel("Product (a * b)")
+plt.plot(x_axis,zeros,color= 'red')
+plt.plot(zero,y_axis,color= 'red')
+plt.scatter(x_component,y_component,c=y_component, cmap='plasma', s = 12)
+plt.grid(True)
+end = time.time()
+diff = end-start
+print(f'It took {round(diff,4)} seconds for the program to run.')
+plt.show()
