@@ -1,0 +1,22 @@
+#Weierstrass Product
+import matplotlib.pyplot as plt
+import numpy as np
+y_prime = 'x*'
+n = 75
+for i in range(1,n + 1):
+    if i == n:
+        y_prime += f'(1 - x**2 /({i**2 * np.pi**2}))'
+        continue
+    y_prime += f'(1 - x**2 /({i**2 * np.pi**2}))*'
+x = np.linspace(-n, n, 1000)
+y = eval(y_prime)
+plt.plot(x, y, label='sin(x) as a function', color='green')
+#plt.plot(x, np.sin(x), label='sin(x)', color='red', linestyle='--')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Approximation of sin(x) using product formula')
+plt.axhline(0, color='black', linewidth=0.5)  # x-axis
+plt.axvline(0, color='black', linewidth=0.5)  # y-axis
+plt.grid(True)
+plt.legend()
+plt.show()
